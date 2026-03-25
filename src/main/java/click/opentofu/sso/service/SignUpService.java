@@ -70,7 +70,17 @@ public class SignUpService {
             response.put("isRegistered",true);
             String email = user.getEmail();
             String subject = "Sign-up request is received, from the opentofu.";
-            String text = "Requester: " + email;
+            String text = ""
+                + email + "님,\n\n"
+                + "안녕하세요.\n\n"
+                + "OpenTofu 사이트 이용을 위해 아래 신청서를 작성해 주세요.\n"
+                + "작성 완료 후 승인된 사용자에 한해 사이트 이용이 가능합니다.\n\n"
+                + "👉 신청서 링크:\n"
+                + "https://forms.gle/kbzNo53bYnz2NNxx6\n\n"
+                + "[작성 시 주의사항]\n"
+                + "- 반드시 OpenTofu 가입 이메일과 동일하게 입력해 주세요.\n"
+                + "- 다를 경우 승인되지 않을 수 있습니다.\n\n"
+                + "감사합니다.";
             sendSimpleMessage("hyunmin.lim.90@icloud.com", subject, text);
         } else if (userEmail.isPresent()) {
             response.put("isEmail", true);

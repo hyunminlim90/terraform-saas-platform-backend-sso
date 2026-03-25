@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "user")
+@Entity
 @Table(
+    name = "users",
     indexes = {
         @Index(name = "user_index", columnList = "userIndex", unique = true)
     }

@@ -20,7 +20,7 @@ public class JwtPublicKeyProvider {
     private final JwtGenerator jwtGenerator;
     
     @CrossOrigin(origins = {
-        "https://java-vpc.opentofu.click"
+        "https://java.opentofu.click"
     }) 
     @GetMapping("/public-key")
     public String getPublicKey() {
