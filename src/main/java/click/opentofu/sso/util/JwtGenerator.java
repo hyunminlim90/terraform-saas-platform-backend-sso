@@ -28,7 +28,7 @@ public class JwtGenerator {
     private final UserRepository userRepository;
 
     public String generateToken(String email, long expireTime) {
-        Optional<UserEntity> userEntity = userRepository.findById(email.split("@")[0]);
+        Optional<UserEntity> userEntity = userRepository.findById(email);
         UserEntity foundUser = userEntity.get();
         Map<String, Object> claims = new HashMap<>();
         claims.put("uuid", foundUser.getUuid());

@@ -108,7 +108,7 @@ public class JwtAccessTokenFilter implements Filter {
                 httpRequest.setAttribute("isJwtAccessTokenValid", false);
             }
             @SuppressWarnings("null")
-            Optional<UserEntity> userEntity = userRepository.findById(jwtAccessTokenEmail.split("@")[0]);
+            Optional<UserEntity> userEntity = userRepository.findById(jwtAccessTokenEmail);
             if (userEntity.isEmpty()) {
                 httpRequest.setAttribute("isJwtAccessTokenValid", false);
                 sendErrorResponse(httpResponse, HttpServletResponse.SC_UNAUTHORIZED, "jwtAccessTokenUserEmailDoesNotExist");

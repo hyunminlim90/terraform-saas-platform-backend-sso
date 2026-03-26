@@ -20,12 +20,12 @@ public class LoginCheckService {
         String email,
         Map<String, Object> response
     ) {
-        Optional<UserEntity> userEntity = userRepository.findById(email.split("@")[0]);
+        Optional<UserEntity> userEntity = userRepository.findById(email);
         if (userEntity.isPresent()) {
             UserEntity foundUser = userEntity.get();
             response.put("userIndex", String.valueOf(foundUser.getUserIndex()));
             response.put("email", foundUser.getEmailId());
-            response.put("isEmail", foundUser.getEmailId().equals(email.split("@")[0]));
+            response.put("isEmail", foundUser.getEmailId().equals(email));
             response.put("isAdmin", foundUser.getIsAdmin());
             response.put("isEnabled", foundUser.getIsEnabled());
             response.put("dbTable", foundUser.getDbTable());

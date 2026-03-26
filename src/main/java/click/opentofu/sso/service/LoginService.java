@@ -21,13 +21,13 @@ public class LoginService {
     private final PasswordEncoder passwordEncoder;
 
     public Map<String, Object> validationLogin(User user) {
-        Optional<UserEntity> userEntity = userRepository.findById(user.getEmail().split("@")[0]);
+        Optional<UserEntity> userEntity = userRepository.findById(user.getEmail());
         Map<String, Object> response = new HashMap<>();
         if (userEntity.isPresent()) {
             UserEntity foundUser = userEntity.get();
             response.put("userIndex", String.valueOf(foundUser.getUserIndex()));
             response.put("email", foundUser.getEmailId());
-            response.put("isEmail", foundUser.getEmailId().equals(user.getEmail().split("@")[0]));
+            response.put("isEmail", foundUser.getEmailId().equals(user.getEmail()));
             response.put("isPassword", passwordEncoder.matches(user.getPassword(), foundUser.getPassword()));
             response.put("isAdmin", foundUser.getIsAdmin());
             response.put("isEnabled", foundUser.getIsEnabled());

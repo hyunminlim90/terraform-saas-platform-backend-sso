@@ -98,7 +98,7 @@ public class JwtRefreshTokenFilter implements Filter {
                 sendErrorResponse(httpResponse, HttpServletResponse.SC_UNAUTHORIZED, "invalidJwtRefreshToken");
                 return;
             }
-            Optional<UserEntity> userEntity = userRepository.findById(jwtRefreshTokenEmail.split("@")[0]);
+            Optional<UserEntity> userEntity = userRepository.findById(jwtRefreshTokenEmail);
             if (userEntity.isEmpty()) {
                 sendErrorResponse(httpResponse, HttpServletResponse.SC_UNAUTHORIZED, "jwtRefreshTokenUserEmailDoesNotExist"); 
                 return;

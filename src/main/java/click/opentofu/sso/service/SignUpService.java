@@ -62,7 +62,7 @@ public class SignUpService {
     }
 
     public Map<String, Object> memberRegistration(User user) {
-        Optional<UserEntity> userEmail = userRepository.findByEmailId(user.getEmail().split("@")[0]);
+        Optional<UserEntity> userEmail = userRepository.findByEmailId(user.getEmail());
         Map<String, Object> response = new HashMap<>();
         if (userEmail.isEmpty()) {
             response.put("isEmail", false);
@@ -102,10 +102,10 @@ public class SignUpService {
             .uuid(uuid)
             .userIndex(nextIndex)
             .password(passwordEncoder.encode(user.getPassword()))
-            .emailId(user.getEmail().split("@")[0])
+            .emailId(user.getEmail())
             .isEnabled(false)
             .isAdmin(false)
-            .dbTable(uuid + "_" + user.getEmail().split("@")[0])
+            .dbTable(uuid + "_" + user.getEmail())
             .build();
         userRepository.save(userEntity);
     }
